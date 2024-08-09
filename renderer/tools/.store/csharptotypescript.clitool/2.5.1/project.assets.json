@@ -1,0 +1,56 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0/win-x64": {
+      "csharptotypescript.clitool/2.5.1": {
+        "type": "package",
+        "tools": {
+          "tools/netcoreapp2.2/any/CSharpToTypeScript.CLITool.deps.json": {},
+          "tools/netcoreapp2.2/any/CSharpToTypeScript.CLITool.dll": {},
+          "tools/netcoreapp2.2/any/CSharpToTypeScript.CLITool.pdb": {},
+          "tools/netcoreapp2.2/any/CSharpToTypeScript.CLITool.runtimeconfig.json": {},
+          "tools/netcoreapp2.2/any/CSharpToTypeScript.Core.dll": {},
+          "tools/netcoreapp2.2/any/CSharpToTypeScript.Core.pdb": {},
+          "tools/netcoreapp2.2/any/DotnetToolSettings.xml": {},
+          "tools/netcoreapp2.2/any/McMaster.Extensions.CommandLineUtils.dll": {},
+          "tools/netcoreapp2.2/any/Microsoft.CodeAnalysis.CSharp.dll": {},
+          "tools/netcoreapp2.2/any/Microsoft.CodeAnalysis.dll": {},
+          "tools/netcoreapp2.2/any/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
+          "tools/netcoreapp2.2/any/Microsoft.Extensions.DependencyInjection.dll": {},
+          "tools/netcoreapp2.2/any/Newtonsoft.Json.dll": {},
+          "tools/netcoreapp2.2/any/System.Runtime.CompilerServices.Unsafe.dll": {},
+          "tools/netcoreapp2.2/any/System.Text.Encoding.CodePages.dll": {},
+          "tools/netcoreapp2.2/any/cs/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/cs/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/de/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/de/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/es/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/es/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/fr/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/fr/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/it/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/it/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/ja/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/ja/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/ko/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/ko/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/pl/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/pl/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/pt-BR/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/ru/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/ru/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll": {},
+          "tools/netcoreapp2.2/any/tr/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/tr/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/zh-Hans/Microsoft.CodeAnalysis.resources.dll": {},
+          "tools/netcoreapp2.2/any/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll": {},
+          "tools/netcoreapp2.2/any/zh-Hant/Microsoft.CodeAnalysis.resources.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {}
+}
