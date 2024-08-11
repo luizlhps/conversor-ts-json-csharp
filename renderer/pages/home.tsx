@@ -1,59 +1,86 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import Editor from '@monaco-editor/react';
+import { OptionsTypesConvertEnum } from './shared/options-types-convert.enum';
+import { ConvertedObjectDto } from './shared/_dto/convertedObjectDto';
+import { ConvertObjectDto } from './shared/_dto/convertObjectDto';
+import { useDebouse } from '../hooks/useDebouse';
+import { ConveterObjectService } from '../services/converterObjectService';
+import useRequest from '@/hooks/usePostConvert';
 
 export default function HomePage() {
-  const [state, setState] = useState();
+  const [typeToConvert, setTypeToConvert] = useState({
+    selected: OptionsTypesConvertEnum.csharpToTypescript,
+  });
 
-  const useDebouse = (delay = 500) => {
-    const isFirstTime = useRef(true);
-    const DebouseDelay = useRef<NodeJS.Timeout>();
+  const { data, error, loading, request } = useRequest<ConvertedObjectDto>();
 
-    const debouse = useCallback((func: () => void) => {
-      if (isFirstTime.current) {
-        isFirstTime.current = false;
-        func();
-      } else {
-        if (DebouseDelay.current) {
-          clearTimeout(DebouseDelay.current);
-        }
-        DebouseDelay.current = setTimeout(() => func(), delay);
-      }
-    }, []);
-    return { debouse };
+  const handleTransform = (input: string) => {
+    const conveterObjectService = new ConveterObjectService();
+
+    const convertObjectDto: ConvertObjectDto = {
+      input,
+      typeToConvert: typeToConvert.selected,
+    };
+
+    const fetchData = async () => await conveterObjectService.ConvertObject(convertObjectDto);
+    request(fetchData);
   };
 
-  const { debouse } = useDebouse(300);
-
-  const handleTransform = (value: string) => {
-    debouse(async () => {
-      fetch('/api/data', {
-        method: 'POST',
-        body: value,
-      })
-        .then((res) => res.json())
-        .then((data) => setState(data));
+  const handleConvertClick = (optionsTypeConvert: OptionsTypesConvertEnum) => {
+    setTypeToConvert((oldValue) => {
+      return { selected: optionsTypeConvert };
     });
   };
 
-  return (
-    <div className='py-5'>
-      <div className='flex justify-center gap-2'>
-        <Button>Json - Typescript</Button>
-        <Button>CSharp - Typscript</Button>
-      </div>
+  console.log(data);
 
-      <div className='flex mt-2'>
-        <Editor
-          height='90vh'
-          defaultLanguage='javascript'
-          onChange={(val) => {
-            handleTransform(val);
-          }}
-          defaultValue='// some comment'
-        />
-        <Editor height='90vh' defaultLanguage='javascript' value={state} defaultValue='// some comment' />
+  return (
+    <div className='h-[calc(100vh-2rem)]'>
+      <div className='h-full py-8'>
+        <div className='flex justify-center gap-2 mb-4'>
+          <Button
+            variant={typeToConvert.selected === OptionsTypesConvertEnum.jsonToTypescript ? 'default' : 'outline'}
+            onClick={() => handleConvertClick(OptionsTypesConvertEnum.jsonToTypescript)}
+          >
+            Json - Typescript
+          </Button>
+          <Button
+            variant={typeToConvert.selected === OptionsTypesConvertEnum.csharpToTypescript ? 'default' : 'outline'}
+            onClick={() => handleConvertClick(OptionsTypesConvertEnum.csharpToTypescript)}
+          >
+            CSharp - Typscript
+          </Button>
+        </div>
+
+        <div className='flex h-full mt-2 sm:flex-row '>
+          <div className='h-full w-[50%]'>
+            <Editor
+              onMount={this?.editorDidMount}
+              options={{
+                automaticLayout: true,
+              }}
+              height='100%'
+              theme='vs-dark'
+              defaultLanguage='csharp'
+              onChange={(val) => {
+                handleTransform(val);
+              }}
+              defaultValue='// some comment'
+            />
+          </div>
+          <div className='h-full w-[50%]'>
+            <Editor
+              onMount={this?.editorDidMount}
+              theme='vs-dark'
+              height='100%'
+              defaultLanguage='typescript'
+              value={data?.output}
+              defaultValue='// some comment'
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
