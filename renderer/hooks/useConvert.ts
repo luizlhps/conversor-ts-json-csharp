@@ -1,5 +1,5 @@
 import { ConvertedObjectDto } from '@/pages/shared/_dto/convertedObjectDto';
-import { OptionsTypesConvertEnum } from '@/pages/shared/options-types-convert.enum';
+import { OptionsTypesConvertEnum } from '@/shared/options-types-convert.enum';
 import { useState } from 'react';
 import useRequest from './useRequest';
 import { ConveterObjectService } from '@/services/converterObjectService';

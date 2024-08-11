@@ -1,6 +1,6 @@
-import { OptionsTypesConvertEnum } from '@/pages/shared/options-types-convert.enum';
-import { ConvertedObjectDto } from '../pages/shared/_dto/convertedObjectDto';
-import { ConvertObjectDto } from '../pages/shared/_dto/convertObjectDto';
+import { ConvertedObjectDto } from '@/shared/_dto/convertedObjectDto';
+import { ConvertObjectDto } from '@/shared/_dto/convertObjectDto';
+import { OptionsTypesConvertEnum } from '@/shared/options-types-convert.enum';
 
 export class ConveterObjectService {
   public async ConvertObject(convertObjectDto: ConvertObjectDto): Promise<ConvertedObjectDto> {

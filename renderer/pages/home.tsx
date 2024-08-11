@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Editor from '@monaco-editor/react';
-import { OptionsTypesConvertEnum } from './shared/options-types-convert.enum';
+import { OptionsTypesConvertEnum } from '../shared/options-types-convert.enum';
 import useConvert from '@/hooks/useConvert';
 
 export default function HomePage() {

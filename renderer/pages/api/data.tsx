@@ -3,9 +3,9 @@ import fs from 'fs/promises';
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ConvertObjectDto } from '../shared/_dto/convertObjectDto';
-import { OptionsTypesConvertEnum } from '../shared/options-types-convert.enum';
-import { ConvertedObjectDto } from '../shared/_dto/convertedObjectDto';
+import { OptionsTypesConvertEnum } from '../../shared/options-types-convert.enum';
+import { ConvertedObjectDto } from '@/shared/_dto/convertedObjectDto';
+import { ConvertObjectDto } from '@/shared/_dto/convertObjectDto';
 
 const exec = promisify(execCallback);
 
