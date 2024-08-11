@@ -1,45 +1,15 @@
-import { useState } from 'react';
-
 import { Button } from '@/components/ui/button';
 import Editor from '@monaco-editor/react';
 import { OptionsTypesConvertEnum } from './shared/options-types-convert.enum';
-import { ConvertedObjectDto } from './shared/_dto/convertedObjectDto';
-import { ConvertObjectDto } from './shared/_dto/convertObjectDto';
-import { useDebouse } from '../hooks/useDebouse';
-import { ConveterObjectService } from '../services/converterObjectService';
-import useRequest from '@/hooks/usePostConvert';
+import useConvert from '@/hooks/useConvert';
 
 export default function HomePage() {
-  const [typeToConvert, setTypeToConvert] = useState({
-    selected: OptionsTypesConvertEnum.csharpToTypescript,
-  });
-
-  const { data, error, loading, request } = useRequest<ConvertedObjectDto>();
-
-  const handleTransform = (input: string) => {
-    const conveterObjectService = new ConveterObjectService();
-
-    const convertObjectDto: ConvertObjectDto = {
-      input,
-      typeToConvert: typeToConvert.selected,
-    };
-
-    const fetchData = async () => await conveterObjectService.ConvertObject(convertObjectDto);
-    request(fetchData);
-  };
-
-  const handleConvertClick = (optionsTypeConvert: OptionsTypesConvertEnum) => {
-    setTypeToConvert((oldValue) => {
-      return { selected: optionsTypeConvert };
-    });
-  };
-
-  console.log(data);
+  const { data, error, loading, typeToConvert, handleConvertClick, handleTransform } = useConvert();
 
   return (
-    <div className='h-[calc(100vh-2rem)]'>
+    <div className='h-[calc(100vh-3rem)]'>
       <div className='h-full py-8'>
-        <div className='flex justify-center gap-2 mb-4'>
+        <div className='flex justify-center gap-2 mb-8'>
           <Button
             variant={typeToConvert.selected === OptionsTypesConvertEnum.jsonToTypescript ? 'default' : 'outline'}
             onClick={() => handleConvertClick(OptionsTypesConvertEnum.jsonToTypescript)}
@@ -54,15 +24,16 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <div className='flex h-full mt-2 sm:flex-row '>
-          <div className='h-full w-[50%]'>
+        <div className='flex h-full mt-2 flex-col lg:flex-row '>
+          <div className='h-full lg:w-[50%] w-full'>
             <Editor
-              onMount={this?.editorDidMount}
               options={{
                 automaticLayout: true,
+                autoIndent: 'full',
               }}
               height='100%'
               theme='vs-dark'
+              language={typeToConvert.selected === OptionsTypesConvertEnum.jsonToTypescript ? 'json' : 'csharp'}
               defaultLanguage='csharp'
               onChange={(val) => {
                 handleTransform(val);
@@ -70,9 +41,8 @@ export default function HomePage() {
               defaultValue='// some comment'
             />
           </div>
-          <div className='h-full w-[50%]'>
+          <div className='h-full lg:w-[50%] w-full '>
             <Editor
-              onMount={this?.editorDidMount}
               theme='vs-dark'
               height='100%'
               defaultLanguage='typescript'
