@@ -1,9 +1,9 @@
-import { ConvertedObjectDto } from '@/pages/shared/_dto/convertedObjectDto';
 import { OptionsTypesConvertEnum } from '@/shared/options-types-convert.enum';
 import { useState } from 'react';
 import useRequest from './useRequest';
 import { ConveterObjectService } from '@/services/converterObjectService';
-import { ConvertObjectDto } from '@/pages/shared/_dto/convertObjectDto';
+import { ConvertedObjectDto } from '@/shared/_dto/convertedObjectDto';
+import { ConvertObjectDto } from '@/shared/_dto/convertObjectDto';
 
 const useConvert = () => {
   const [typeToConvert, setTypeToConvert] = useState({
