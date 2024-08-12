@@ -10,4 +10,5 @@ next-env.d.ts
 
 # build
 /app
+dtos
 dist

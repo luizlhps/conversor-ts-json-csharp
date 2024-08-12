@@ -38,5 +38,16 @@
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.4.5"
+  },
+  "build": {
+    "files": [
+      "dist/**/*",
+      "tools/**/*",
+      "app/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      "./renderer/tools/**"
+    ]
   }
 }

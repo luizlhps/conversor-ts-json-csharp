@@ -46,11 +46,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       }
 
       if (body.typeToConvert == OptionsTypesConvertEnum.jsonToTypescript) {
-        const t = {
-          cats: [{ name: 'Kittin' }, { name: 'Mittin' }],
-          favoriteNumber: 42,
-          favoriteWord: 'Hello',
-        };
         const JsonToTS = (await import('json-to-ts')).default;
         const interfaces = JsonToTS(JSON.parse(body.input), {
           rootName: 'RootInterface',
