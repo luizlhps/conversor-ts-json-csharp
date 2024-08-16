@@ -1,5 +1,5 @@
 import path from 'path';
-import { app, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 import { exec as execCallback } from 'child_process';
@@ -23,6 +23,16 @@ if (isProd) {
   const mainWindow = createWindow('main', {
     width: 1000,
     height: 600,
+    backgroundColor: '#1e1e1e',
+    titleBarStyle: 'hidden',
+    roundedCorners: true,
+    titleBarOverlay: {
+      color: '#1e1e1e',
+      symbolColor: '#5865f2',
+      height: 10,
+    },
+    title: 'Conversor TS',
+    icon: 'assets/icon.png',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
