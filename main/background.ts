@@ -28,7 +28,7 @@ if (isProd) {
     roundedCorners: true,
     titleBarOverlay: {
       color: '#1e1e1e',
-      symbolColor: '#5865f2',
+      symbolColor: '#9a9fa1',
       height: 10,
     },
     title: 'Conversor TS',
