@@ -2,7 +2,8 @@ import { Button } from '@/components/ui/button';
 import Editor from '@monaco-editor/react';
 import { OptionsTypesConvertEnum } from '../shared/options-types-convert.enum';
 import useConvert from '@/hooks/useConvert';
-import { Header } from '@/components/ui/Header';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
   const { data, error, loading, typeToConvert, handleConvertClick, handleTransform } = useConvert();
@@ -10,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Header></Header>
-      <div className='h-[calc(100vh-5rem)] mt-10 '>
+      <div className='h-[calc(100vh-6rem)] mt-10 '>
         <div className='h-full py-8 '>
           <div className='flex justify-center gap-2 mb-8'>
             <Button
@@ -56,6 +57,8 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      <Footer></Footer>
     </>
   );
 }

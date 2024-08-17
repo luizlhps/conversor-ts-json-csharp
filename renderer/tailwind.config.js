@@ -12,13 +12,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: '#5865f2',
+        border: '#383838',
+        input: '#383838',
+        ring: '#383838',
+        background: '#383838',
+        foreground: '#383838',
         primary: {
-          DEFAULT: '#5865f2',
+          DEFAULT: '#383838',
           foreground: '#fff',
         },
         secondary: {
@@ -34,8 +34,8 @@ module.exports = {
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: '#383838',
+          foreground: '#fff',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
