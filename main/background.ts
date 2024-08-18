@@ -4,12 +4,13 @@ import serve from 'electron-serve';
 import { createWindow } from './helpers';
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';
-import { OptionsTypesConvertEnum } from '@/shared/options-types-convert.enum';
 const fs = require('fs').promises;
 
 const exec = promisify(execCallback);
 
 const isProd = process.env.NODE_ENV === 'production';
+
+import { BaseError } from '../resources/exceptions/BaseError';
 
 if (isProd) {
   serve({ directory: 'app' });
@@ -54,6 +55,10 @@ app.on('window-all-closed', () => {
 ipcMain.on('convert', async (event, arg) => {
   const body = JSON.parse(arg);
 
+  console.log(new BaseError('O arquivo Ts não existe ', 404));
+
+  event.reply('convert', JSON.stringify(new BaseError('O arquivo Ts não existe ', 404)));
+
   try {
     const fileToConvertPath = path.join(process.cwd(), 'dtos', 'dto.cs');
     const pathParsed = path.parse(fileToConvertPath);
@@ -70,9 +75,7 @@ ipcMain.on('convert', async (event, arg) => {
       const { stdout, stderr } = await exec(`"${executablePath}"`, { timeout: 10000 });
 
       if (stderr) {
-        console.log(stderr);
-
-        throw new Error(stderr);
+        event.reply('convert', JSON.stringify(new BaseError('Houve um erro na execução do conversor Csharp', 500)));
       }
 
       const tsFilePath = path.join(process.cwd(), 'dtos', 'dto.ts');
@@ -84,7 +87,7 @@ ipcMain.on('convert', async (event, arg) => {
 
         fs.unlink(tsFilePath);
       } else {
-        throw new Error('Bad Request');
+        event.reply('convert', JSON.stringify(new BaseError('O arquivo Ts não existe ', 404)));
       }
     }
 
@@ -101,7 +104,7 @@ ipcMain.on('convert', async (event, arg) => {
     }
   } catch (err) {
     console.error(err);
-    event.reply('convert', 'houve um erro', err);
+    event.reply('convert', JSON.stringify(new BaseError(`Houve um erro interno na hora da conversão`, 500)));
   }
 });
 
