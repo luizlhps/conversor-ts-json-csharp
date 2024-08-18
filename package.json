@@ -47,7 +47,8 @@
       "package.json"
     ],
     "extraResources": [
-      "./renderer/tools/**"
+      "./renderer/tools/**",
+      "./assets/**"
     ]
   }
 }

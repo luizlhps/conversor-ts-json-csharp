@@ -32,7 +32,7 @@ if (isProd) {
       height: 10,
     },
     title: 'Conversor TS',
-    icon: 'assets/icon.png',
+    icon: isProd ? 'resources/assets/icon.png' : 'assets/icon.png',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -70,6 +70,8 @@ ipcMain.on('convert', async (event, arg) => {
       const { stdout, stderr } = await exec(`"${executablePath}"`, { timeout: 10000 });
 
       if (stderr) {
+        console.log(stderr);
+
         throw new Error(stderr);
       }
 
@@ -79,6 +81,8 @@ ipcMain.on('convert', async (event, arg) => {
         const resultado = await fs.readFile(tsFilePath, { encoding: 'utf8' });
 
         event.reply('convert', JSON.stringify({ output: resultado }));
+
+        fs.unlink(tsFilePath);
       } else {
         throw new Error('Bad Request');
       }
@@ -112,11 +116,3 @@ async function fileExists(filePath) {
     throw err;
   }
 }
-
-ipcMain.on('message', async (event, arg) => {
-  console.log(event, arg);
-
-  const body = JSON.stringify(arg);
-
-  event.reply('message', `${body}`);
-});
