@@ -15,6 +15,7 @@ const useRequest = <T>() => {
 
       try {
         const response = await apiFunction();
+
         setData(response);
       } catch (error) {
         setError(error as Error);

@@ -10,16 +10,14 @@ export class ConverterObjectService {
     return new Promise((resolve, reject) => {
       window.ipc.on('convert', (message: string | BaseError) => {
         if (typeof message === 'string') {
-          console.log(new BaseError('Erro Interno', 500));
-
           const res = JSON.parse(message);
 
-          if (res?.status !== 200) {
+          if (res && res?.status && res?.status !== 200) {
             reject(new BaseError('Erro na conversão', res?.status));
             return;
           }
 
-          resolve(res);
+          return resolve(res);
         } else {
           reject(new BaseError('Erro Interno', 500));
         }

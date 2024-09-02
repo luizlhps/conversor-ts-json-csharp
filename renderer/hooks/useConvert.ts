@@ -12,7 +12,7 @@ const useConvert = () => {
 
   const { data, error, loading, request } = useRequest<ConvertedObjectDto>();
 
-  const handleTransform = (input: string) => {
+  const handleTransform = async (input: string) => {
     if (input.length < 4) return;
 
     const converterObjectService = new ConverterObjectService();

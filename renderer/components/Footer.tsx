@@ -2,14 +2,7 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <div
-      className='h-8 fixed w-full top-[97%] left-0 border-t bg-[#1e1e1e] border-[#3f4053]'
-      style={
-        {
-          WebkitAppRegion: 'drag',
-        } as React.CSSProperties
-      }
-    >
+    <div className='h-8 fixed w-full top-[97%] left-0 border-t bg-[#1e1e1e] border-[#3f4053]'>
       {/*       <div className='flex items-center mt-1 ml-4 gap-1'>
         <svg
           className='fill-[#9a9fa1] '

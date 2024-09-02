@@ -55,10 +55,6 @@ app.on('window-all-closed', () => {
 ipcMain.on('convert', async (event, arg) => {
   const body = JSON.parse(arg);
 
-  console.log(new BaseError('O arquivo Ts não existe ', 404));
-
-  event.reply('convert', JSON.stringify(new BaseError('O arquivo Ts não existe ', 404)));
-
   try {
     const fileToConvertPath = path.join(process.cwd(), 'dtos', 'dto.cs');
     const pathParsed = path.parse(fileToConvertPath);
