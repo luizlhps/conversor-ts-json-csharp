@@ -4,9 +4,12 @@ import { OptionsTypesConvertEnum } from '../shared/options-types-convert.enum';
 import useConvert from '@/hooks/useConvert';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import Image from 'next/image';
+import refreshIcon from '../public/refresh.svg';
+import { useEffect } from 'react';
 
 export default function HomePage() {
-  const { data, error, loading, typeToConvert, handleConvertClick, handleTransform } = useConvert();
+  const { data, error, inputValue, loading, typeToConvert, handleConvertClick, handleTransform } = useConvert();
 
   return (
     <>
@@ -20,6 +23,9 @@ export default function HomePage() {
             >
               Json - Typescript
             </Button>
+            <button onClick={() => handleTransform(inputValue)} className='ring-1 ring-primary solid p-2  rounded-md'>
+              <Image src={refreshIcon} width={20} height={20} alt='Refresh'></Image>
+            </button>
             <Button
               variant={typeToConvert.selected === OptionsTypesConvertEnum.csharpToTypescript ? 'default' : 'outline'}
               onClick={() => handleConvertClick(OptionsTypesConvertEnum.csharpToTypescript)}

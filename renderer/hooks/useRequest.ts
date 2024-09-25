@@ -5,7 +5,7 @@ const useRequest = <T>() => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [data, setData] = useState<T | null>(null);
-  const { debouse } = useDebouse(300);
+  const { debouse } = useDebouse(500);
 
   const request = async (apiFunction: () => Promise<T>): Promise<void> => {
     debouse(async () => {

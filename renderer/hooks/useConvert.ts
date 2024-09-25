@@ -1,5 +1,5 @@
 import { OptionsTypesConvertEnum } from '@/shared/options-types-convert.enum';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useRequest from './useRequest';
 import { ConverterObjectService } from '@/services/converterObjectService';
 import { ConvertedObjectDto } from '@/shared/_dto/convertedObjectDto';
@@ -9,6 +9,8 @@ const useConvert = () => {
   const [typeToConvert, setTypeToConvert] = useState({
     selected: OptionsTypesConvertEnum.csharpToTypescript,
   });
+
+  const [inputValue, setInputValue] = useState<string>(null);
 
   const { data, error, loading, request } = useRequest<ConvertedObjectDto>();
 
@@ -22,6 +24,11 @@ const useConvert = () => {
       typeToConvert: typeToConvert.selected,
     };
 
+    //setar valor para poder fazer refresh
+    setInputValue((oldvalue: string) => {
+      return input;
+    });
+
     const fetchData = async () => await converterObjectService.ConvertObject(convertObjectDto);
     request(fetchData);
   };
@@ -33,6 +40,7 @@ const useConvert = () => {
   };
 
   return {
+    inputValue,
     handleConvertClick,
     handleTransform,
     typeToConvert,
