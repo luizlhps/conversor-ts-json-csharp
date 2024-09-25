@@ -1,38 +1,28 @@
-<p align="center"><img src="https://i.imgur.com/a9QWW0v.png"></p>
+<p align="center"><img src="https://i.imgur.com/6hu8aAm.jpeg"></p>
 
-## Usage
+# Descrição
+Este projeto foi desenvolvido para auxiliar desenvolvedores que utilizam C# ou JSON em suas rotinas, facilitando a conversão para TypeScript diretamente no ambiente de desenvolvimento, sem a necessidade de acessar sites externos ou depender de conexão com a internet.
 
-### Create an App
+## Como Usar
 
-```
-# with npx
-$ npx create-nextron-app my-app --example with-tailwindcss
-
-# with yarn
-$ yarn create nextron-app my-app --example with-tailwindcss
-
-# with pnpm
-$ pnpm dlx create-nextron-app my-app --example with-tailwindcss
-```
-
-### Install Dependencies
+### Instale as dependência s
 
 ```
 $ cd my-app
 
-# using yarn or npm
-$ yarn (or `npm install`)
+# usando yarn ou npm
+$ yarn (ou `npm install`)
 
-# using pnpm
+# usando pnpm
 $ pnpm install --shamefully-hoist
 ```
 
-### Use it
+### Para poder usar
 
 ```
-# development mode
-$ yarn dev (or `npm run dev` or `pnpm run dev`)
+# Em desenvolvimento
+$ yarn dev (ou `npm run dev` ou `pnpm run dev`)
 
-# production build
-$ yarn build (or `npm run build` or `pnpm run build`)
+# Para buildar o projeto
+$ yarn build (ou `npm run build` ou `pnpm run build`)
 ```
